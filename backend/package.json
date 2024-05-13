@@ -1,0 +1,16 @@
+{
+  "name": "real-time-chatapp",
+  "version": "1.0.0",
+  "description": "this is a full stack chat app made using websockets server",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Prashant Sherkar",
+  "license": "ISC",
+  "dependencies": {
+    "@types/websocket": "^1.0.10",
+    "typescript": "^5.4.5",
+    "websocket": "^1.0.35"
+  }
+}
