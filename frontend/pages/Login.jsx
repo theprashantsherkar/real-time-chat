@@ -2,9 +2,9 @@ import React from 'react'
 
 function Login() {
   return (
-      <>
-        this is the login page
-      </>
+    <h1>
+      this is a Login page
+    </h1>
   )
 }
 
