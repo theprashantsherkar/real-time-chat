@@ -14,10 +14,10 @@ function Header() {
                 </h1>
 
                 <div className="list">
-                    <Link to="/"  >home</Link>
-                    <Link to= '/about' >About App</Link>
-                    <Link to= '/login' >log in</Link>
-                    <Link to='/register' >Sign in</Link>
+                    <Link>Home</Link>
+                    <Link>About us</Link>
+                    <Link>Log in</Link>
+                    <Link>Sign in</Link>
                 </div>
             </nav>
         </>
