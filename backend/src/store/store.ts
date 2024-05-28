@@ -3,7 +3,7 @@ export type UserId = string
 
 
 export interface chat{
-    chatId: string
+    id: string
     userId: UserId
     name: string
     message:string
@@ -11,7 +11,7 @@ export interface chat{
 }
 
 
-export abstract class store {
+export abstract class store { 
 
     constructor() {
 

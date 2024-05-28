@@ -19,7 +19,7 @@ const wsServer = new WebSocketServer({
     httpServer: server,
     autoAcceptConnections: false,
     
-    
+     
 })
 
 const originIsAllowed = (origin:string) => {

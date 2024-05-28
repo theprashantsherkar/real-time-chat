@@ -19,7 +19,7 @@ export abstract class inMemoryStore implements store {
     initRoom(RoomId:string) {
         this.store.set(RoomId, {
             RoomId,
-            chats: [],
+            chats: [], 
         });
     }    
 
@@ -37,7 +37,7 @@ export abstract class inMemoryStore implements store {
             return
         }
         room.chats.push({
-            chatId:(globalChatId++).toString(),
+            id:(globalChatId++).toString(),
             userId,
             name,
             message,
@@ -45,11 +45,15 @@ export abstract class inMemoryStore implements store {
         })
     }
 
-    upVote(RoomId: string, chatId: string) {
+    upVote(userId: UserId, RoomId: string, chatId: string) {
         const room = this.store.get(RoomId)
         if (!room) {
             return
         }
-        const chat = room.chats.find()
+        const chat = room.chats.find(({ id }) => id === chatId)
+        if (chat) {
+            chat.upvotes.push(userId)
+
+        }   
     }
 }
