@@ -4,6 +4,7 @@ import { UserManager } from "./src/UserManager";
 import { IncomingMessage, SupportedMessage } from "./src/messages/IncomingMessages";
 import { inMemoryStore } from "./src/store/inMemoryStore";
 import { Store } from "./src/store/Store";
+import { OutgoingMessage, SupportedMessage as OutgoingSupportedMessage } from "./src/messages/OutGoMessage";
 
 const PORT = 8000
 
@@ -26,11 +27,11 @@ server.listen(PORT, () => {
 const wsServer = new WebSocketServer({
     httpServer: server,
     autoAcceptConnections: false,
-    
-     
+
+
 })
 
-const originIsAllowed = (origin:string) => {
+const originIsAllowed = (origin: string) => {
     return true;
 }
 
@@ -49,7 +50,7 @@ wsServer.on('request', (req) => {
 
             try {
                 messageHandler(connection, JSON.parse(message.utf8Data))
-                
+
             }
             catch (err) {
                 console.log(err)
@@ -58,7 +59,7 @@ wsServer.on('request', (req) => {
             // connection.sendUTF(message.utf8Data)
 
         }
-    
+
     })
     connection.on('close', (reasonCode, description) => {
         console.log(`${new Date()} Peer: ${connection.remoteAddress} disconnected`)
@@ -77,13 +78,46 @@ function messageHandler(ws: connection, message: IncomingMessage) {
         const user = userManager.getUser(payload.roomId, payload.userId)
         if (!user) {
             console.error('User not found in Database')
-            return 
+            return
         }
-        store.addChat(payload.userId, user.name, payload.roomId, payload.message)
+        let chat = store.addChat(payload.userId, user.name, payload.roomId, payload.message)
+        if (!chat) {
+            return;
+        }
         //ToDo : add broadcast login here
+        const OutgoingPayload = {
+            type: OutgoingSupportedMessage.Addchat,
+            payload: {
+                chatId: chat.id,
+                roomId: payload.roomId,
+                message: payload.message,
+                name: user.name,
+                upvotes: 0,
+            }
+
+        }
+        userManager.broadcast(payload.roomId, payload.userId, OutgoingPayload)
     }
+
     if (message.type == SupportedMessage.UpvoteMessage) {
         const payload = message.payload;
-        store.upVote(payload.userId, payload.userId,payload.chatId)
+        const chat = store.upVote(payload.userId, payload.userId, payload.chatId)
+        if (!chat) {
+            return;
+        }
+        
+        //ToDo : add broadcast login here
+        const OutgoingPayload:OutgoingMessage = {
+            type: OutgoingSupportedMessage.UpdateChat,
+            payload: {
+                chatId:payload.chatId,
+                roomId: payload.roomId,
+                upvotes: chat.upvotes.length,
+            }
+
+        }
+        userManager.broadcast(payload.roomId, payload.userId, OutgoingPayload)
     }
+
 }
+

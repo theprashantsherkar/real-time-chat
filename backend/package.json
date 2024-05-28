@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "this is a full stack chat app made using websockets server",
   "main": "index.tsx",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
