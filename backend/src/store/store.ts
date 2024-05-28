@@ -11,7 +11,7 @@ export interface chat{
 }
 
 
-export abstract class store { 
+export abstract class Store { 
 
     constructor() {
 

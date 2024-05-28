@@ -1,4 +1,4 @@
-import { UserId, chat,store } from "./src/store/store"
+import { UserId, chat,Store } from './Store'
 
 var globalChatId = 0
 
@@ -8,7 +8,7 @@ export interface Room{
     
 }
 
-export abstract class inMemoryStore implements store {
+export class inMemoryStore implements Store {
 
     private store : Map<string, Room>
 
