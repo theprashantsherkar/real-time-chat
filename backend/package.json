@@ -19,6 +19,8 @@
     "@types/jsonwebtoken": "^9.0.7",
     "@types/mongoose": "^5.11.97",
     "@types/nodemon": "^1.19.6",
+    "@types/websocket": "^1.0.10",
+    "@types/ws": "^8.5.14",
     "bcrypt": "^5.1.1",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -27,7 +29,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.5",
     "nodemon": "^3.1.9",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "ws": "^8.18.0"
   },
   "devDependencies": {
     "ts-node": "^10.9.2"
