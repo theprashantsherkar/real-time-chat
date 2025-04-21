@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
     // ...
+    "target": "ESNext",
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "Bundler",
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "baseUrl": ".",

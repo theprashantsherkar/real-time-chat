@@ -3,11 +3,13 @@ import mongoose from "mongoose";
 export const connectDB = async () => {
     try {
 
-        const dbURL = process.env.MONGOOSE_URL || "mongodb://localhost:27017/";
+        const dbURL = process.env.MONGOOSE_URL || "mongodb+srv://prashant:Prashu@cluster0.yexg3to.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
         if (!dbURL) {
             return console.log("No URL provided");
         }
-        mongoose.connect(dbURL, { dbName: "real-time-chat" })
+        mongoose.connect(dbURL, {
+             dbName: "real-time-chat"
+            })
             .then(() => {
                 console.log("Database connected.");
             })

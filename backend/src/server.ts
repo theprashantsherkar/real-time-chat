@@ -1,7 +1,8 @@
-import { app } from "./index.ts";
-import { connectDB } from "./db/database.ts";
+import { app } from "./index";
+import { connectDB } from "./db/database";
 import WebSocket, {  WebSocketServer } from "ws";
 import { server } from "websocket";
+
 
 
 connectDB();
