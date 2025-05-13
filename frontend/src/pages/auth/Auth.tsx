@@ -7,7 +7,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
-
 export function Login() {
 
     const navigate = useNavigate();
@@ -23,7 +22,7 @@ export function Login() {
   return (
     <div className='flex items-center justify-center w-full h-screen '>
                 <div className='flex flex-col items-center justify-center w-1/3 h-1/2 bg-white shadow-lg rounded-lg p-5 gap-5'>
-                    <h1 className='text-3xl font-bold mb-4 flex items-center justify-center gap-3 text-black'><ArrowBackIcon className='hover:cursor-pointer text-black rounded-full border border-black scale-150' onClick={() => navigate(-1)} />Login</h1>
+                    <h1 className='text-3xl font-bold mb-4 flex items-center justify-center gap-3 text-black'>Login</h1>
                     <FormControl className='flex flex-col gap-5 '>
                         <TextField
                             id="outlined-basic"
